@@ -10,14 +10,21 @@ public class OperationsServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		resp.getWriter().println("I made it!");			
-	}
+//	@Override
+//	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//		resp.getWriter().println("I made it!");			
+//	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-				
+		try {
+			String jsonData = req.toString();
+			
+			System.out.println(jsonData);
+			
+		} catch (Exception e) {
+			resp.getWriter().println("Invalid JSON Object.");
+		}		
 	}
 	
 	@Override
