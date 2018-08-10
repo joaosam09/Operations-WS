@@ -25,14 +25,7 @@ public class OperationsServlet extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		try {
-			String jsonData = req.toString();
-			
-			System.out.println(jsonData);
-			
-		} catch (Exception e) {
-			resp.getWriter().println("Invalid JSON Object.");
-		}
+		
 	}
 	
 	@Override
