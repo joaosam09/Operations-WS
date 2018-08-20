@@ -1,6 +1,6 @@
-package com.criticalsoftware.ws.models;
+package com.criticalsoftware.ws.operations;
 
-public class OperationRequestModel {
+public class OperationRequest {
 	private double value1;
 	private double value2;
 	private String operation;

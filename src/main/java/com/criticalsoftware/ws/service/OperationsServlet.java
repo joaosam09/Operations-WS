@@ -12,39 +12,38 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-
-import com.criticalsoftware.ws.models.OperationRequestModel;
-import com.criticalsoftware.ws.operations.OperationManager;;
+import com.criticalsoftware.ws.operations.OperationManager;
+import com.criticalsoftware.ws.operations.OperationRequest;
 
 public class OperationsServlet extends HttpServlet {
-	
-	private static final long serialVersionUID = 1L;
-	
+		
+	private static final long serialVersionUID = 5855507729388869984L;
+			
 	@Override	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		try {
-			
-			//Reads the JSON request
-			StringBuilder sb = new StringBuilder();
-		    BufferedReader reader = request.getReader();
-		    	
-		    try {
-		        String line;
-		        while ((line = reader.readLine()) != null) {
-		            sb.append(line).append('\n');
-		        }
-		    } finally {
-		        reader.close();
-		    }
-		    		    
-		    String jsonData = sb.toString();					    		   
-		    ObjectMapper objectMapper = new ObjectMapper();
+					
+		//Reads the JSON request
+		StringBuilder sb = new StringBuilder();
+	    BufferedReader reader = request.getReader();
+	    	
+	    try {
+	        String line;
+	        while ((line = reader.readLine()) != null) {
+	            sb.append(line).append('\n');
+	        }
+	    } finally {
+	        reader.close();
+	    }
 		    
-		    //Serializes the received JSON to a new OperationRequestModel
-		    OperationRequestModel operationModel = objectMapper.readValue(jsonData, OperationRequestModel.class);		      
-		    			
+	    //Serializes the received JSON to a new instance of OperationRequest
+	    try {	    
+		    String jsonData = sb.toString();					    		   
+		    ObjectMapper objectMapper = new ObjectMapper();		    		   
+		    OperationRequest operationRequest = objectMapper.readValue(jsonData, OperationRequest.class);		      
+		    		    
+		    
 		} catch (Exception e) {
-			response.getWriter().println("Invalid JSON Object.");
+			response.getWriter().println("Invalid JSON Object.\n" + e.getMessage());
 		}		
 	}
 	
