@@ -2,6 +2,7 @@ package com.criticalsoftware.ws.operations;
 
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class OperationManager {
@@ -20,7 +21,7 @@ public class OperationManager {
 		return validOperations.contains(operation.toUpperCase()) ? true : false;		
 	}	
 	
-	public static double calculate(OperationRequest request) throws InvalidParameterException {
+	public static OperationValidResponse processRequest(OperationRequest request) throws InvalidParameterException {
 		synchronized (lock) {
 			if(isOperationValid(request.getOperation())) {
 				double result = 0.0;
@@ -43,13 +44,21 @@ public class OperationManager {
 						break;			
 				}
 				
-				return result;
+				return createNewOperationResponse(result);
 				
 			}else {
 				throw new InvalidParameterException("Unrecognized operation value: " + request.getOperation() + "\n" + 
 													"Recognized values: add, subtract, multiply, divide, average");
 			}	
 		}			
+	}
+	
+	private static OperationValidResponse createNewOperationResponse(double result) {
+		OperationValidResponse response = new OperationValidResponse();
+		response.setResult(result);		
+		response.setTime(new Date());
+		
+		return response;
 	}
 	
 	private static double add(double value1, double value2) {
