@@ -1,5 +1,12 @@
-package com.criticalsoftware.ws.operations;
+package com.criticalsoftware.ws.operation;
 
+/**
+ * Class representing an operation request.
+ * Contains 2 values and the operation to be calculated.
+ *  
+ * @author João Santos
+ * @version 1.0
+ */
 public class OperationRequest {
 	private double value1;
 	private double value2;

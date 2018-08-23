@@ -1,17 +1,24 @@
-package com.criticalsoftware.ws.operations;
+package com.criticalsoftware.ws.operation;
 
-public class OperationResponse {
-	private int status;
+/**
+ * Class representing an operation response.
+ * Contains status code, description message, result of the operation and date of the operation.
+ *  
+ * @author João Santos
+ * @version 1.0
+ */
+public class OperationResponse {	
+	private int statusCode;
 	private String message;
 	private double result;	
 	private String time;
 		
 	public int getStatus() {
-		return status;
+		return statusCode;
 	}
 	
 	public void setStatus(int status) {
-		this.status = status;
+		this.statusCode = status;
 	}
 	
 	public double getResult() {

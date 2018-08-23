@@ -1,5 +1,11 @@
-package com.criticalsoftware.ws.operations;
+package com.criticalsoftware.ws.operation;
 
+/**
+ * Enumeration with supported operations and it's calculation method.
+ * 
+ * @author João Santos
+ * @version 1.0
+ */
 public enum Operation {
     ADD,
     SUBTRACT,
