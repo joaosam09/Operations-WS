@@ -7,7 +7,7 @@
   
   <servlet>
   	<servlet-name>OperationsServlet</servlet-name>
-  	<servlet-class>com.criticalsoftware.ws.service.OperationsServlet</servlet-class>  	
+  	<servlet-class>com.criticalsoftware.ws.servlets.OperationsServlet</servlet-class>  	
   	<load-on-startup>1</load-on-startup>
   </servlet>
   
